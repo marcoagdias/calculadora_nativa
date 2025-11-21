@@ -1,53 +1,148 @@
-# Pré-requisitos
+# Mix Papelaria e Presentes - Sistema de Gestão
 
-- **Ter o Node.js instalado no computador**
-- **Ter o NativeScript CLI instalado globalmente**
+Sistema completo de estoque e vendas para papelaria, desenvolvido com React, TypeScript, Node.js e SQLite.
 
----
+## 🚀 Funcionalidades
 
-# Passo a Passo para Instalação e Execução
+- **Dashboard**: Visão geral com estatísticas de vendas, produtos e gráficos
+- **Gestão de Produtos**: Cadastro completo com controle de estoque e alertas
+- **PDV (Ponto de Venda)**: Interface intuitiva para vendas com múltiplas formas de pagamento
+- **Relatórios**: Análises detalhadas de vendas e produtos
+- **Autenticação**: Sistema seguro com JWT
 
-## **1. Instalar o NativeScript CLI globalmente**
+## 📋 Pré-requisitos
+
+- Node.js 18+ instalado
+- npm ou yarn
+
+## 🔧 Instalação
+
+1. Instalar dependências:
 ```bash
-npm install -g @nativescript/cli
+npm run install:all
 ```
 
----
+## ▶️ Executar o Sistema
 
-## **2. Preparar o ambiente Android**
+### Desenvolvimento (recomendado)
 
-1. **Instalar o Java Development Kit (JDK)**  
-2. **Instalar o Android Studio**  
-3. **Configurar as variáveis de ambiente:**
-   - `ANDROID_HOME`
-   - `JAVA_HOME`  
-4. **Instalar o Android SDK através do Android Studio**
-
----
-
-## **3. Clonar o projeto**
-
-1. **Criar uma pasta para o projeto**  
-2. **Copiar todos os arquivos do projeto para esta pasta**
-
----
-
-## **4. Instalar as dependências**
-Na pasta do projeto, execute o comando:
+Execute servidor e cliente simultaneamente:
 ```bash
-npm install
+npm run dev
 ```
 
----
+Ou execute separadamente:
 
-## **5. Executar o projeto**
-
-### **Para desenvolvimento e teste:**
+**Backend (API):**
 ```bash
-ns run android
+npm run dev:server
+```
+API disponível em: http://localhost:3001
+
+**Frontend:**
+```bash
+npm run dev:client
+```
+Interface disponível em: http://localhost:3000
+
+### Produção
+
+1. Build:
+```bash
+npm run build
 ```
 
-### **Para apenas visualizar:**
+2. Iniciar servidor:
 ```bash
-ns preview
+npm start
 ```
+
+## 🔐 Acesso Padrão
+
+- **Usuário**: admin
+- **Senha**: admin123
+
+## 🛠️ Tecnologias
+
+### Backend
+- Node.js + Express
+- TypeScript
+- SQLite (better-sqlite3)
+- JWT para autenticação
+- bcryptjs para senhas
+
+### Frontend
+- React 18
+- TypeScript
+- Tailwind CSS
+- React Router
+- Recharts (gráficos)
+- Axios
+
+## 📁 Estrutura do Projeto
+
+```
+/
+├── server/          # Backend API
+│   ├── src/
+│   │   ├── database/    # Configuração do banco
+│   │   ├── middleware/  # Autenticação
+│   │   ├── routes/      # Rotas da API
+│   │   └── index.ts     # Servidor principal
+│   └── database.sqlite  # Banco de dados
+│
+├── client/          # Frontend React
+│   ├── src/
+│   │   ├── components/  # Componentes
+│   │   ├── contexts/    # Context API
+│   │   ├── pages/       # Páginas
+│   │   ├── services/    # API calls
+│   │   └── App.tsx
+│   └── index.html
+│
+└── package.json     # Scripts principais
+```
+
+## 📊 Banco de Dados
+
+O sistema usa SQLite com as seguintes tabelas:
+- `users` - Usuários do sistema
+- `categories` - Categorias de produtos
+- `products` - Produtos
+- `sales` - Vendas
+- `sale_items` - Itens das vendas
+
+## 🎯 Uso do Sistema
+
+### Cadastrar Produtos
+1. Acesse "Produtos" no menu
+2. Clique em "Novo Produto"
+3. Preencha os dados e salve
+
+### Realizar Vendas
+1. Acesse "PDV (Vendas)"
+2. Digite ou escaneie o código de barras
+3. Ajuste quantidades se necessário
+4. Selecione a forma de pagamento
+5. Finalize a venda
+
+### Visualizar Relatórios
+1. Acesse "Relatórios"
+2. Escolha o tipo de relatório
+3. Defina o período (para vendas)
+4. Clique em "Gerar Relatório"
+
+## 🔒 Segurança
+
+- Senhas criptografadas com bcrypt
+- Autenticação JWT
+- Proteção de rotas
+- Validação de dados
+
+## 📝 Licença
+
+MIT
+
+## 👨‍💻 Suporte
+
+Para dúvidas ou problemas, entre em contato com o desenvolvedor.
